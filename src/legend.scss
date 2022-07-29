@@ -1,4 +1,64 @@
-// .ltv-legend-chart
-// .ltv-legend-chart-svg
+$radius: 8px;
+$padding: 8px;
+$tint-color: dodgerblue;
+$label-font-size: 12px;
 
-// ...
+.ltv-legend {
+  display: block;
+  text-align: left;
+
+  .ltv-legend-title {
+    font-size: $label-font-size;
+    padding-bottom: 5px;
+  }
+}
+
+.ltv-legend-group {
+  font-size: $label-font-size;
+  margin-right: 5px;
+  display: block;
+  line-height: 1.5;
+}
+
+/* Customize the label (the container) */
+.ltv-legend-pill {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.ltv-legend-pill input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.ltv-legend-pill-span {
+  font-size: $label-font-size;
+  display: inline-flex;
+  padding: 2px 7px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  color: white;
+  opacity: 0.2;
+}
+
+// /* On mouse-over, add a grey background color */
+.ltv-legend-pill input[type="checkbox"]:hover ~ .ltv-pill-pill-span {
+  opacity: 0.8;
+}
+
+/* When the checkbox is checked, add a blue background */
+.ltv-legend-pill input[type="checkbox"]:checked ~ .ltv-legend-pill-span {
+  opacity: 1;
+}
+
+.ltv-legend-pill input[type="radio"]:checked ~ .ltv-legend-pill-span {
+  opacity: 1;
+}

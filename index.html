@@ -8,15 +8,24 @@
     <div class="ltv-container" style="max-width: 1000px; margin: auto">
       <h1 style="text-align: center">lotivis-legend</h1>
       <!-- Default -->
-      <div
-        id="legend-chart-1"
-        style="width: 49%; display: inline-block"
-      >
-        <!-- legend Chart 1 Code Here -->
-      </div>
+      groups: false, sections: false
+      <div id="legend-chart-1"></div>
+
+      groups: false, sections: true
+      <div id="legend-chart-2"></div>
+
+      groups: true, sections: false
+      <div id="legend-chart-3"></div>
+
+      groups: true, sections: true
+      <div id="legend-chart-4"></div>
+
+      color scheme:
+      <div id="legend-chart-5"></div>
     </div>
 
     <script src="../dist/lotivis-legend.js"></script>
+    <script src="./node_modules/lotivis-colors/dist/lotivis-colors.js"></script>
     <script src="./node_modules/lotivis-data/dist/lotivis-data.js"></script>
     <script src="./node_modules/lotivis-datasets/dist/lotivis-datasets.js"></script>
 
@@ -163,18 +172,44 @@
       ];
 
       // lotivis.debug(true);
-
-      let data = lotivis.datasetsToData(datasets);
-      let dc = lotivis.dataController(data);
+      let dc = lotivis.dataController();
 
       lotivis
         .legend()
         .selector("#legend-chart-1")
-        .width(600)
-        .height(400)
+        .groups(false)
+        .sections(false)
+        .dataController(dc);
+
+      lotivis
+        .legend()
+        .selector("#legend-chart-2")
+        .groups(false)
+        .sections(true)
+        .dataController(dc);
+
+      lotivis
+        .legend()
+        .selector("#legend-chart-3")
+        .groups(true)
+        .sections(false)
+        .dataController(dc);
+
+      lotivis
+        .legend()
+        .selector("#legend-chart-4")
+        .groups(true)
+        .sections(true)
+        .dataController(dc);
+
+      lotivis
+        .legend()
+        .selector("#legend-chart-5")
         .colorScheme(lotivis.colorSchemeLotivis10)
-        .dataController(dc)
-        .run();
+        .dataController(dc);
+
+      let data = lotivis.datasetsToData(datasets);
+      dc.data(data);
     </script>
   </body>
 </html>
